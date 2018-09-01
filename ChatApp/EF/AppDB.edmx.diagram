@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d9c2902490a4f5dbc0180b1b43b5f27" Name="Diagram1">
+        <EntityTypeShape EntityType="ChatAppModel.ChuDe" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatAppModel.DanhMuc" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatAppModel.LoaiTaiKhoan" Width="1.5" PointX="5.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatAppModel.Nhom" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatAppModel.TaiKhoan" Width="1.5" PointX="8" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatAppModel.ThongTinNhom" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatAppModel.TinNhanChuDe" Width="1.5" PointX="10.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatAppModel.TinNhanNhom" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="ChatAppModel.FK__ChuDe__MaDanhMuc__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="ChatAppModel.FK__TinNhanCh__MaChu__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="ChatAppModel.FK__TaiKhoan__MaLoai__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="ChatAppModel.FK__ThongTinN__MaNho__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="ChatAppModel.FK__TinNhanNh__MaNho__25869641" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

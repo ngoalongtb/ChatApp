@@ -1,0 +1,35 @@
+﻿@model ChatApp.EF.ThongTinNhom
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ThongTinNhom</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTaiKhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTaiKhoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nhom.TenNhom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaThongTinNhom }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

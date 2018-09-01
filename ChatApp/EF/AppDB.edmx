@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ChatAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChuDe">
+          <Key>
+            <PropertyRef Name="MaChuDe" />
+          </Key>
+          <Property Name="MaChuDe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenChuDe" Type="nvarchar" MaxLength="255" />
+          <Property Name="MaDanhMuc" Type="int" />
+        </EntityType>
+        <EntityType Name="DanhMuc">
+          <Key>
+            <PropertyRef Name="MaDanhMuc" />
+          </Key>
+          <Property Name="MaDanhMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="LoaiTaiKhoan">
+          <Key>
+            <PropertyRef Name="MaLoaiTaiKhoan" />
+          </Key>
+          <Property Name="MaLoaiTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoaiTaiKhoan" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Nhom">
+          <Key>
+            <PropertyRef Name="MaNhom" />
+          </Key>
+          <Property Name="MaNhom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNhom" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="TenTaiKhoan" />
+          </Key>
+          <Property Name="TenTaiKhoan" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="255" />
+          <Property Name="TenHienThi" Type="nvarchar" MaxLength="255" />
+          <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
+          <Property Name="SoDienThoai" Type="varchar" MaxLength="20" />
+          <Property Name="MaLoaiTaiKhoan" Type="int" />
+        </EntityType>
+        <EntityType Name="ThongTinNhom">
+          <Key>
+            <PropertyRef Name="MaThongTinNhom" />
+          </Key>
+          <Property Name="MaThongTinNhom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTaiKhoan" Type="varchar" MaxLength="255" />
+          <Property Name="MaNhom" Type="int" />
+        </EntityType>
+        <EntityType Name="TinNhanChuDe">
+          <Key>
+            <PropertyRef Name="MaTinNhan" />
+          </Key>
+          <Property Name="MaTinNhan" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTaiKhoan" Type="varchar" MaxLength="255" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="MaChuDe" Type="int" />
+        </EntityType>
+        <EntityType Name="TinNhanNhom">
+          <Key>
+            <PropertyRef Name="MaTinNhanNhom" />
+          </Key>
+          <Property Name="MaTinNhanNhom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTaiKhoan" Type="varchar" MaxLength="255" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="MaNhom" Type="int" />
+        </EntityType>
+        <Association Name="FK__ChuDe__MaDanhMuc__20C1E124">
+          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMuc">
+              <PropertyRef Name="MaDanhMuc" />
+            </Principal>
+            <Dependent Role="ChuDe">
+              <PropertyRef Name="MaDanhMuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__MaLoai__1DE57479">
+          <End Role="LoaiTaiKhoan" Type="Self.LoaiTaiKhoan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThongTinN__MaNho__24927208">
+          <End Role="Nhom" Type="Self.Nhom" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ThongTinNhom" Type="Self.ThongTinNhom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhom">
+              <PropertyRef Name="MaNhom" />
+            </Principal>
+            <Dependent Role="ThongTinNhom">
+              <PropertyRef Name="MaNhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TinNhanCh__MaChu__21B6055D">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TinNhanChuDe" Type="Self.TinNhanChuDe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="MaChuDe" />
+            </Principal>
+            <Dependent Role="TinNhanChuDe">
+              <PropertyRef Name="MaChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TinNhanNh__MaNho__25869641">
+          <End Role="Nhom" Type="Self.Nhom" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TinNhanNhom" Type="Self.TinNhanNhom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhom">
+              <PropertyRef Name="MaNhom" />
+            </Principal>
+            <Dependent Role="TinNhanNhom">
+              <PropertyRef Name="MaNhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChatAppModelStoreContainer">
+          <EntitySet Name="ChuDe" EntityType="Self.ChuDe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiTaiKhoan" EntityType="Self.LoaiTaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nhom" EntityType="Self.Nhom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThongTinNhom" EntityType="Self.ThongTinNhom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TinNhanChuDe" EntityType="Self.TinNhanChuDe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TinNhanNhom" EntityType="Self.TinNhanNhom" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ChuDe__MaDanhMuc__20C1E124" Association="Self.FK__ChuDe__MaDanhMuc__20C1E124">
+            <End Role="DanhMuc" EntitySet="DanhMuc" />
+            <End Role="ChuDe" EntitySet="ChuDe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__MaLoai__1DE57479" Association="Self.FK__TaiKhoan__MaLoai__1DE57479">
+            <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoan" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThongTinN__MaNho__24927208" Association="Self.FK__ThongTinN__MaNho__24927208">
+            <End Role="Nhom" EntitySet="Nhom" />
+            <End Role="ThongTinNhom" EntitySet="ThongTinNhom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TinNhanCh__MaChu__21B6055D" Association="Self.FK__TinNhanCh__MaChu__21B6055D">
+            <End Role="ChuDe" EntitySet="ChuDe" />
+            <End Role="TinNhanChuDe" EntitySet="TinNhanChuDe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TinNhanNh__MaNho__25869641" Association="Self.FK__TinNhanNh__MaNho__25869641">
+            <End Role="Nhom" EntitySet="Nhom" />
+            <End Role="TinNhanNhom" EntitySet="TinNhanNhom" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChatAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChuDe">
+          <Key>
+            <PropertyRef Name="MaChuDe" />
+          </Key>
+          <Property Name="MaChuDe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenChuDe" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaDanhMuc" Type="Int32" />
+          <NavigationProperty Name="DanhMuc" Relationship="Self.FK__ChuDe__MaDanhMuc__20C1E124" FromRole="ChuDe" ToRole="DanhMuc" />
+          <NavigationProperty Name="TinNhanChuDes" Relationship="Self.FK__TinNhanCh__MaChu__21B6055D" FromRole="ChuDe" ToRole="TinNhanChuDe" />
+        </EntityType>
+        <EntityType Name="DanhMuc">
+          <Key>
+            <PropertyRef Name="MaDanhMuc" />
+          </Key>
+          <Property Name="MaDanhMuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDanhMuc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChuDes" Relationship="Self.FK__ChuDe__MaDanhMuc__20C1E124" FromRole="DanhMuc" ToRole="ChuDe" />
+        </EntityType>
+        <EntityType Name="LoaiTaiKhoan">
+          <Key>
+            <PropertyRef Name="MaLoaiTaiKhoan" />
+          </Key>
+          <Property Name="MaLoaiTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiTaiKhoan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TaiKhoans" Relationship="Self.FK__TaiKhoan__MaLoai__1DE57479" FromRole="LoaiTaiKhoan" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="Nhom">
+          <Key>
+            <PropertyRef Name="MaNhom" />
+          </Key>
+          <Property Name="MaNhom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNhom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ThongTinNhoms" Relationship="Self.FK__ThongTinN__MaNho__24927208" FromRole="Nhom" ToRole="ThongTinNhom" />
+          <NavigationProperty Name="TinNhanNhoms" Relationship="Self.FK__TinNhanNh__MaNho__25869641" FromRole="Nhom" ToRole="TinNhanNhom" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="TenTaiKhoan" />
+          </Key>
+          <Property Name="TenTaiKhoan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TenHienThi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MaLoaiTaiKhoan" Type="Int32" />
+          <NavigationProperty Name="LoaiTaiKhoan" Relationship="Self.FK__TaiKhoan__MaLoai__1DE57479" FromRole="TaiKhoan" ToRole="LoaiTaiKhoan" />
+        </EntityType>
+        <EntityType Name="ThongTinNhom">
+          <Key>
+            <PropertyRef Name="MaThongTinNhom" />
+          </Key>
+          <Property Name="MaThongTinNhom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTaiKhoan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MaNhom" Type="Int32" />
+          <NavigationProperty Name="Nhom" Relationship="Self.FK__ThongTinN__MaNho__24927208" FromRole="ThongTinNhom" ToRole="Nhom" />
+        </EntityType>
+        <EntityType Name="TinNhanChuDe">
+          <Key>
+            <PropertyRef Name="MaTinNhan" />
+          </Key>
+          <Property Name="MaTinNhan" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTaiKhoan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaChuDe" Type="Int32" />
+          <NavigationProperty Name="ChuDe" Relationship="Self.FK__TinNhanCh__MaChu__21B6055D" FromRole="TinNhanChuDe" ToRole="ChuDe" />
+        </EntityType>
+        <EntityType Name="TinNhanNhom">
+          <Key>
+            <PropertyRef Name="MaTinNhanNhom" />
+          </Key>
+          <Property Name="MaTinNhanNhom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTaiKhoan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaNhom" Type="Int32" />
+          <NavigationProperty Name="Nhom" Relationship="Self.FK__TinNhanNh__MaNho__25869641" FromRole="TinNhanNhom" ToRole="Nhom" />
+        </EntityType>
+        <Association Name="FK__ChuDe__MaDanhMuc__20C1E124">
+          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMuc">
+              <PropertyRef Name="MaDanhMuc" />
+            </Principal>
+            <Dependent Role="ChuDe">
+              <PropertyRef Name="MaDanhMuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TinNhanCh__MaChu__21B6055D">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TinNhanChuDe" Type="Self.TinNhanChuDe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="MaChuDe" />
+            </Principal>
+            <Dependent Role="TinNhanChuDe">
+              <PropertyRef Name="MaChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__MaLoai__1DE57479">
+          <End Role="LoaiTaiKhoan" Type="Self.LoaiTaiKhoan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThongTinN__MaNho__24927208">
+          <End Role="Nhom" Type="Self.Nhom" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ThongTinNhom" Type="Self.ThongTinNhom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhom">
+              <PropertyRef Name="MaNhom" />
+            </Principal>
+            <Dependent Role="ThongTinNhom">
+              <PropertyRef Name="MaNhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TinNhanNh__MaNho__25869641">
+          <End Role="Nhom" Type="Self.Nhom" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TinNhanNhom" Type="Self.TinNhanNhom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhom">
+              <PropertyRef Name="MaNhom" />
+            </Principal>
+            <Dependent Role="TinNhanNhom">
+              <PropertyRef Name="MaNhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChatDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChuDes" EntityType="Self.ChuDe" />
+          <EntitySet Name="DanhMucs" EntityType="Self.DanhMuc" />
+          <EntitySet Name="LoaiTaiKhoans" EntityType="Self.LoaiTaiKhoan" />
+          <EntitySet Name="Nhoms" EntityType="Self.Nhom" />
+          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+          <EntitySet Name="ThongTinNhoms" EntityType="Self.ThongTinNhom" />
+          <EntitySet Name="TinNhanChuDes" EntityType="Self.TinNhanChuDe" />
+          <EntitySet Name="TinNhanNhoms" EntityType="Self.TinNhanNhom" />
+          <AssociationSet Name="FK__ChuDe__MaDanhMuc__20C1E124" Association="Self.FK__ChuDe__MaDanhMuc__20C1E124">
+            <End Role="DanhMuc" EntitySet="DanhMucs" />
+            <End Role="ChuDe" EntitySet="ChuDes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TinNhanCh__MaChu__21B6055D" Association="Self.FK__TinNhanCh__MaChu__21B6055D">
+            <End Role="ChuDe" EntitySet="ChuDes" />
+            <End Role="TinNhanChuDe" EntitySet="TinNhanChuDes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__MaLoai__1DE57479" Association="Self.FK__TaiKhoan__MaLoai__1DE57479">
+            <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThongTinN__MaNho__24927208" Association="Self.FK__ThongTinN__MaNho__24927208">
+            <End Role="Nhom" EntitySet="Nhoms" />
+            <End Role="ThongTinNhom" EntitySet="ThongTinNhoms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TinNhanNh__MaNho__25869641" Association="Self.FK__TinNhanNh__MaNho__25869641">
+            <End Role="Nhom" EntitySet="Nhoms" />
+            <End Role="TinNhanNhom" EntitySet="TinNhanNhoms" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChatAppModelStoreContainer" CdmEntityContainer="ChatDB">
+          <EntitySetMapping Name="ChuDes">
+            <EntityTypeMapping TypeName="ChatAppModel.ChuDe">
+              <MappingFragment StoreEntitySet="ChuDe">
+                <ScalarProperty Name="MaChuDe" ColumnName="MaChuDe" />
+                <ScalarProperty Name="TenChuDe" ColumnName="TenChuDe" />
+                <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DanhMucs">
+            <EntityTypeMapping TypeName="ChatAppModel.DanhMuc">
+              <MappingFragment StoreEntitySet="DanhMuc">
+                <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
+                <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiTaiKhoans">
+            <EntityTypeMapping TypeName="ChatAppModel.LoaiTaiKhoan">
+              <MappingFragment StoreEntitySet="LoaiTaiKhoan">
+                <ScalarProperty Name="MaLoaiTaiKhoan" ColumnName="MaLoaiTaiKhoan" />
+                <ScalarProperty Name="TenLoaiTaiKhoan" ColumnName="TenLoaiTaiKhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nhoms">
+            <EntityTypeMapping TypeName="ChatAppModel.Nhom">
+              <MappingFragment StoreEntitySet="Nhom">
+                <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+                <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="ChatAppModel.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="TenTaiKhoan" ColumnName="TenTaiKhoan" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenHienThi" ColumnName="TenHienThi" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="MaLoaiTaiKhoan" ColumnName="MaLoaiTaiKhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThongTinNhoms">
+            <EntityTypeMapping TypeName="ChatAppModel.ThongTinNhom">
+              <MappingFragment StoreEntitySet="ThongTinNhom">
+                <ScalarProperty Name="MaThongTinNhom" ColumnName="MaThongTinNhom" />
+                <ScalarProperty Name="TenTaiKhoan" ColumnName="TenTaiKhoan" />
+                <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TinNhanChuDes">
+            <EntityTypeMapping TypeName="ChatAppModel.TinNhanChuDe">
+              <MappingFragment StoreEntitySet="TinNhanChuDe">
+                <ScalarProperty Name="MaTinNhan" ColumnName="MaTinNhan" />
+                <ScalarProperty Name="TenTaiKhoan" ColumnName="TenTaiKhoan" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="MaChuDe" ColumnName="MaChuDe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TinNhanNhoms">
+            <EntityTypeMapping TypeName="ChatAppModel.TinNhanNhom">
+              <MappingFragment StoreEntitySet="TinNhanNhom">
+                <ScalarProperty Name="MaTinNhanNhom" ColumnName="MaTinNhanNhom" />
+                <ScalarProperty Name="TenTaiKhoan" ColumnName="TenTaiKhoan" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

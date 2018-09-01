@@ -6838,6 +6838,7 @@
     <Content Include="Public\Admin\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Public\Admin\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Public\Admin\starter.html" />
+    <Content Include="Public\Client\style.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

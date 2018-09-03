@@ -5,55 +5,61 @@
     Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
 }
 
-<h2>Details</h2>
+<section class="content container-fluid">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Chi tiết</h3>
+        </div>
 
-<div>
-    <h4>TaiKhoan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MatKhau)
-        </dt>
+        <div>
+            <h4>TaiKhoan</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.MatKhau)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MatKhau)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.MatKhau)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenHienThi)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TenHienThi)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenHienThi)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TenHienThi)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.HinhAnh)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.HinhAnh)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SoDienThoai)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SoDienThoai)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.SoDienThoai)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiTaiKhoan.TenLoaiTaiKhoan)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LoaiTaiKhoan.TenLoaiTaiKhoan)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiTaiKhoan.TenLoaiTaiKhoan)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.LoaiTaiKhoan.TenLoaiTaiKhoan)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TenTaiKhoan }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <div class="box-footer">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+</section>

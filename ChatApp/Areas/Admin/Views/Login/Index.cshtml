@@ -1,0 +1,100 @@
+﻿@model ChatApp.EF.TaiKhoan
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+    <title>Quản lý vật tư - Đăng nhập</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Effect Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+    </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link href="~/Public/login/css/style.css" rel="stylesheet" />
+    <link href="~/Public/login/css/fontawesome-all.css" rel="stylesheet" />
+
+    <link href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <!-- //web-fonts -->
+</head>
+
+<body>
+    <!-- bg effect -->
+    <div id="bg">
+        <canvas></canvas>
+        <canvas></canvas>
+        <canvas></canvas>
+    </div>
+    <!-- //bg effect -->
+    <!-- title -->
+    <h1>Quản lý vật tư</h1>
+    <!-- //title -->
+    <!-- content -->
+    <div class="sub-main-w3">
+        <form action="/Admin/Login/Login" method="post">
+            <h2>
+                Đăng nhập
+                <i class="fas fa-level-down-alt"></i>
+                @if (ViewBag.Message != null)
+                {
+                    <span style="color:red">@ViewBag.Message</span>
+                }
+            </h2>
+            <div class="form-style-agile">
+                <label>
+                    <i class="fas fa-user"></i>
+                    Tài khoản
+                </label>
+                <input type="text" class="form-control" placeholder="Tài khoản" name="username" required="">
+            </div>
+            <div class="form-style-agile">
+                <label>
+                    <i class="fas fa-unlock-alt"></i>
+                    Mật khẩu
+                </label>
+                <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+            </div>
+            <!-- checkbox -->
+            <div class="wthree-text">
+                <ul>
+                    @*<li>
+                            <label class="anim">
+                                <input type="checkbox" class="checkbox" required="">
+                                <span>Ghi nhớ</span>
+                            </label>
+                        </li>*@
+                    <li>
+                        <a href="#">Quên mật khẩu</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- //checkbox -->
+            <input type="submit" name="name" value="Đăng nhập" />
+        </form>
+    </div>
+    <script src="~/Public/login/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Public/login/js/canva_moving_effect.js"></script>
+    <!-- //effect js -->
+</body>
+</html>

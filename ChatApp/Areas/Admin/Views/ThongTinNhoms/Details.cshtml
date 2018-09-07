@@ -5,31 +5,37 @@
     Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
 }
 
-<h2>Details</h2>
+<section class="content container-fluid">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Chi tiết</h3>
+        </div>
 
-<div>
-    <h4>ThongTinNhom</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenTaiKhoan)
-        </dt>
+        <div>
+            <h4>Thông tin nhóm</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TenTaiKhoan)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenTaiKhoan)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TenTaiKhoan)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nhom.TenNhom)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nhom.TenNhom)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Nhom.TenNhom)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaThongTinNhom }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <div class="box-footer">
+            @Html.ActionLink("Sửa", "Edit", new { id = Model.MaThongTinNhom }) |
+            @Html.ActionLink("Danh sách", "Index")
+        </div>
+    </div>
+</section>

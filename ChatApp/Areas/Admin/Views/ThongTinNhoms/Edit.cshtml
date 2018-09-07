@@ -5,42 +5,48 @@
     Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ThongTinNhom</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MaThongTinNhom)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenTaiKhoan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenTaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenTaiKhoan, "", new { @class = "text-danger" })
-            </div>
+<section class="content container-fluid">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Sửa thông tin nhóm</h3>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaNhom, "MaNhom", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaNhom", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaNhom, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @using (Html.BeginForm())
+        {
+            @
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-horizontal">
+                <h4>Thoon</h4>
+                <hr />
+                @
+                @
+
+                <div class="form-group">
+                    @
+                    <div class="col-md-10">
+                        @
+                        @
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @
+                    <div class="col-md-10">
+                        @
+                        @
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
+        }
+
+        <div class="box-footer">
+            @Html.ActionLink("Danh sách", "Index")
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+</section>

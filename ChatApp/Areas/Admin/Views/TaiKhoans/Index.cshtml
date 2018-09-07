@@ -45,7 +45,7 @@
                                 @Html.DisplayFor(modelItem => item.TenHienThi)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.HinhAnh)
+                                <img src="~/Public/Upload/Img_TaiKhoan/@item.HinhAnh" style="width:100px;height:100px" alt="Alternate Text" />
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.SoDienThoai)
@@ -54,9 +54,9 @@
                                 @Html.DisplayFor(modelItem => item.LoaiTaiKhoan.TenLoaiTaiKhoan)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.TenTaiKhoan }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.TenTaiKhoan }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.TenTaiKhoan })
+                                @Html.ActionLink("Sửa", "Edit", new { id = item.TenTaiKhoan }) |
+                                @Html.ActionLink("Chi tiết", "Details", new { id = item.TenTaiKhoan }) |
+                                @Html.ActionLink("Xoá", "Delete", new { id = item.TenTaiKhoan })
                             </td>
                         </tr>
                     }

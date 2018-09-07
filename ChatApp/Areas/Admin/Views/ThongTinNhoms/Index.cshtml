@@ -4,37 +4,61 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
 }
+<section class="content container-fluid">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Danh sách thông tin nhóm</h3>
+            <h3>@Html.ActionLink("Tạo mới", "Create")</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TenTaiKhoan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenTaiKhoan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nhom.TenNhom)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MaThongTinNhom }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.MaThongTinNhom }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MaThongTinNhom })
+                        </td>
+                    </tr>
+                }
 
-<h2>Index</h2>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenTaiKhoan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenTaiKhoan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nhom.TenNhom)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaThongTinNhom }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaThongTinNhom }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaThongTinNhom })
-        </td>
-    </tr>
+@section script{
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
 }
-
-</table>

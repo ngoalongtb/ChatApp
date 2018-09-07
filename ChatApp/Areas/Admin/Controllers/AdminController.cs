@@ -35,3 +35,4 @@ namespace ChatApp.Areas.Admin.Controllers
             return false;
         }
     }
+}

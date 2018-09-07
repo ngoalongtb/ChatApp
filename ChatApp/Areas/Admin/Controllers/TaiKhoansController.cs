@@ -52,7 +52,16 @@ namespace ChatApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TaiKhoans.Add(taiKhoan);
+                TaiKhoan taikhoan =  db.TaiKhoans.Add(taiKhoan);
+                db.SaveChanges();
+                if (Request.Files.Count > 0 && Request.Files[0].FileName.Trim() != "")
+                {
+                    string[] _arr = Request.Files[0].FileName.Split('.');
+                    string type = _arr[_arr.Length - 1];
+
+                    taikhoan.HinhAnh = taikhoan.TenTaiKhoan + "." + type;
+                    Request.Files[0].SaveAs(Server.MapPath("~/Public/Upload/Img_TaiKhoan/") + taikhoan.HinhAnh);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -86,6 +95,14 @@ namespace ChatApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0 && Request.Files[0].FileName.Trim() != "")
+                {
+                    string[] _arr = Request.Files[0].FileName.Split('.');
+                    string type = _arr[_arr.Length - 1];
+
+                    taiKhoan.HinhAnh = taiKhoan.TenTaiKhoan + "." + type;
+                    Request.Files[0].SaveAs(Server.MapPath("~/Public/Upload/Img_TaiKhoan/") + taiKhoan.HinhAnh);
+                }
                 db.Entry(taiKhoan).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

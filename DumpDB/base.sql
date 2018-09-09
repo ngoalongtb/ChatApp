@@ -92,4 +92,8 @@ ALTER TABLE TinNhanNhom
 ADD FOREIGN KEY(MaNhom) REFERENCES Nhom(MaNhom)
 ON DELETE CASCADE
 ON UPDATE CASCADE
+select *from LoaiTaiKhoan
+select *from TaiKhoan
+
+INSERT INTO TaiKhoan VALUES('minh','12345','anh','anh1.jpg','123456',1);
 

@@ -172,10 +172,13 @@
     <Compile Include="Areas\Admin\Controllers\ChuDesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThongTinNhomsController.cs" />
+    <Compile Include="Areas\Admin\Models\DashboardModel.cs" />
     <Compile Include="Areas\Admin\Models\Roles.cs" />
+    <Compile Include="Controllers\AuthenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EF\AppDB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -7495,6 +7498,7 @@
     <Content Include="Areas\Admin\Views\ThongTinNhoms\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ThongTinNhoms\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -7518,11 +7522,14 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Authen\Login.cshtml" />
+    <Content Include="Views\Authen\Register.cshtml" />
+    <Content Include="Views\Authen\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Admin\" />
-    <Folder Include="Areas\Admin\Views\Dashboard\" />
+    <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Models\" />
     <Folder Include="Public\Upload\Img_TaiKhoan\" />
     <Folder Include="Views\Shared\" />

@@ -15,12 +15,12 @@ namespace ChatApp.Areas.Admin.Controllers
             TaiKhoan loginAccount = (TaiKhoan)Session["LoginAccount"];
             if (loginAccount == null)
             {
-                filterContext.Result = new RedirectResult("~/Admin/Login/Index");
+                filterContext.Result = new RedirectResult("/Authen/Login");
             }
 
             if (loginAccount != null && !ValidateRole(loginAccount))
             {
-                filterContext.Result = new RedirectResult("~/Admin/Dashboard/Index");
+                filterContext.Result = new RedirectResult("/Authen/Login");
             }
             //
             base.OnActionExecuted(filterContext);
